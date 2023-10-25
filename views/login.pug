@@ -1,0 +1,36 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(href='/static/css/style.css' rel='stylesheet' type='text/css')
+        title Document
+    body
+        div.container
+            div.content
+                div.header
+                    table(align="center")
+                        tr(align="center")
+                            td(align="center") 
+                                div.logindiv
+                                    table(align="center")
+                                        tr(align="center")
+                                            td(align="center")
+                                                img(id="comlogoid" style='width:100px;' src="/static/image/user.png")
+ 
+                                    h1 Login
+                                    table(align="center")
+                                        tr(algin="center")
+                                            td(align="center")  
+                                                input(type="text" id="username" placeholder="Name")
+                                        tr(align="center")
+                                            td(align="center")
+                                                input(type="password" id="userpassword" placeholder="Password")
+                                    table(align="center") 
+                                        tr(align="center")
+                                            td
+                                                button(onclick='loginbutton()') Login 
+    
+    block script 
+        script(type='text/javascript' src='/static/js/login.js')
+        script(type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js")

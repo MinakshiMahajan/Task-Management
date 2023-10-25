@@ -1,0 +1,203 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(href='/static/css/style.css' rel='stylesheet' type='text/css')
+        title Document
+    body(onload="onload();")
+        div.container
+            div.content
+                div.header
+                    div.logo
+                        table(align="center" width="100%")
+                            tr(align="center") 
+                                td(width="80%" style="text-align:left")
+                                td(style="text-align:center")         
+                                    <b>#{username}</b><br>                       
+                                    <a href="/1/login" class="loginlink">Logout</a>
+                        table(align="center")
+                            tr(align="center")
+                                td(align="center") 
+                                    img(src='/static/image/taskimg.jpeg' style='width:40%;')
+                            tr(align="center")
+                                td(align="center")
+                                    h1 Manage Task
+                                
+                        table(align="center")
+                            tr(align="center")
+                                td(align="center")
+                                    if(position=='Admin')
+                                        button(onclick='addtask()') Add Task
+                                td(align="center")
+                                    button(onclick="location.href='/1/login';") X
+                        table(align="center")
+                            tr(align="center")
+                                td(align="center")
+                                    | From
+                                    input(type="date" id="fromdate")
+                                td(align="center")
+                                    | To 
+                                    input(type="date" id="todate")
+                                td(align="center")
+                                    button(onclick="showtaskdata();") Show
+                        table(align="center")
+                            tr(align="center")
+                                td(align="center")
+                                    div#showtaskdata1
+                        div.model12#edittaskdig 
+                            <dialog id="edittaskdig1" style='width:40%'>      
+                                table(align="center")
+                                    tr(align="center")
+                                        td(align="center")
+                                            table(align="center" style='width:100%')
+                                                tr(align="center")
+                                                    td(style="margin:0px; padding:0px;")
+                                                        h1 Assign Task
+                                                    td(align="center")
+                                                        input(type="text" id="hiddentaskid")
+                                            table(align="center")
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        input(type="text" placeholder='From' size='8' disabled) 
+                                                    td(align="center")
+                                                        select(name="from" id="fromid1" style='width:300px')  
+                                            table(align="center")                                    
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        input(type="text" placeholder='To' size='8' disabled) 
+                                                    td(align="center")
+                                                        select(name="to" id="touserid1" style='width:300px') 
+                                            table(align="center")
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        input(type="text" placeholder='Subject' size='8' disabled)
+                                                    td(align="center")
+                                                        input(type="text" id="subjectid1" placeholder='Subject' style='width:300px')
+                                            table(align="center")
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        input(type="text" placeholder='Description' size='8' disabled)  
+                                                    td(align="center")
+                                                        textarea(type="text" id="description1" placeholder="Description" name="taskdescription", cols="28", rows="5") 
+                                                        
+                                            table(align="center")
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        input(type="text" placeholder='Start Date' size='8' disabled)
+                                                    td(align="center")
+                                                        input(type="datetime-local" id='dateid1' style='width:300px')
+                                            table(align="center")
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        input(type="text" placeholder='Due Date' size='8' disabled)
+                                                    td(align="center")
+                                                        input(type="datetime-local" id='duedateid1' style='width:300px')
+                                            table(align="center")
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        input(type="text" placeholder='Status' size='8' disabled)
+                                                    td(align="center")
+                                                        input(type="text" placeholder='Status' id='statusid1' style='width:300px')
+                                            table(align="center")
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        input(type="text" placeholder='Priority' size='8' disabled)
+                                                    td(align="center")
+                                                        select(name="priorityid" id="priorityid1" style='width:300px')
+                                                            option(value="Select") Select
+                                                            option(value="High Priority Task") High Priority Task
+                                                            option(value="Medium Priority Task") Medium Priority Task
+                                                            option(value="Low Priority Task") Low Priority Task
+                                                            option(value="Additional Priority Task") Additional Priority Task      
+                                            table(align="center")
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        button(onclick="edittaskdetails();") Edit
+                                                    td(align="center")
+                                                        button(onclick="closeedittaskb();") X 
+                            </dialog>  
+                        div.model12#addtaskdig
+                            <dialog id="addtaskdialog" style='width:40%'>
+                                table(align="center" style='width:100%')
+                                    tr(align="center")
+                                        td(align="center")
+                                            table(align="center" style='width:100%')
+                                                tr(align="center")
+                                                    td(style="margin:0px; padding:0px;")
+                                                        h1 Assign Task
+                                            table(align="center")
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        input(type="text" placeholder='From' size='8' disabled) 
+                                                    td(align="center")
+                                                        select(name="from" id="fromid" style='width:300px')  
+                                            table(align="center")                                    
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        input(type="text" placeholder='To' size='8' disabled) 
+                                                    td(align="center")
+                                                        select(name="to" id="touserid" style='width:300px') 
+                                            table(align="center")
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        input(type="text" placeholder='Subject' size='8' disabled)
+                                                    td(align="center")
+                                                        input(type="text" id="subjectid" placeholder='Subject' style='width:300px')
+                                            table(align="center")
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        input(type="text" placeholder='Description' size='8' disabled)  
+                                                    td(align="center")
+                                                        textarea(type="text" id="description" placeholder="Description" name="taskdescription", cols="28", rows="5") 
+                                                        
+                                            table(align="center")
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        input(type="text" placeholder='Start Date' size='8' disabled)
+                                                    td(align="center")
+                                                        input(type="datetime-local" id='dateid' style='width:300px')
+                                            table(align="center")
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        input(type="text" placeholder='Due Date' size='8' disabled)
+                                                    td(align="center")
+                                                        input(type="datetime-local" id='duedateid' style='width:300px')
+                                            table(align="center")
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        input(type="text" placeholder='Status' size='8' disabled)
+                                                    td(align="center")
+                                                        select(name="statusid" id="statusid" style='width:300px')
+                                                            option(value="Select") Select
+                                                            option(value="Pending") Pending
+                                                            option(value="Assigned") Assigned
+                                                            option(value="In Process") In Process
+                                                            option(value="Declined") Declined
+                                                            option(value="Completed") Completed
+                                            table(align="center")
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        input(type="text" placeholder='Priority' size='8' disabled)
+                                                    td(align="center")
+                                                        select(name="priorityid" id="priorityid" style='width:300px')
+                                                            option(value="Select") Select
+                                                            option(value="High Priority Task") High Priority Task
+                                                            option(value="Medium Priority Task") Medium Priority Task
+                                                            option(value="Low Priority Task") Low Priority Task
+                                                            option(value="Additional Priority Task") Additional Priority Task      
+                                            table(align="center")
+                                                tr(align="center")
+                                                    td(align="center")
+                                                        button(onclick='sendtask();') Send  
+                                                    td(align="center")
+                                                        button(onclick="closedig()") X 
+
+                                            
+                            </dialog>
+
+
+    
+    block script 
+        script(type='text/javascript' src='/static/js/mainmenu.js')
+        script(type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js")
